@@ -5,7 +5,7 @@ node_modules/
 .tmp*/
 runs/
 skill-inputs/
-workflows/
+/workflows/
 packages/platform-macos/.build/
 packages/*/.build/
 coverage/
