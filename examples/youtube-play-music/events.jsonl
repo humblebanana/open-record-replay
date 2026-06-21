@@ -1,6 +1,0 @@
-{"id":1,"kind":"session.started","timestamp":"2026-06-21T00:00:00.000Z","session_id":"sess_fixture_youtube"}
-{"id":2,"kind":"window.changed","timestamp":"2026-06-21T00:00:01.000Z","app":{"name":"Google Chrome","bundle_id":"com.google.Chrome"},"window":{"title":"YouTube","url":"https://www.youtube.com"},"ax":{"mode":"fullTree","text":"Search YouTube"}}
-{"id":3,"kind":"keyboard.text_input","timestamp":"2026-06-21T00:00:02.000Z","app":{"name":"Google Chrome"},"window":{"title":"YouTube"},"keyboard":{"text":"study jazz music","target":{"role":"AXTextField","title":"Search"}}}
-{"id":4,"kind":"keyboard.submit","timestamp":"2026-06-21T00:00:03.000Z","app":{"name":"Google Chrome"},"window":{"title":"YouTube"},"keyboard":{"keyEquivalent":"return"}}
-{"id":5,"kind":"mouse.click","timestamp":"2026-06-21T00:00:04.000Z","app":{"name":"Google Chrome"},"window":{"title":"YouTube Search"},"mouse":{"button":"left","target":{"role":"AXLink","title":"Study Jazz Music"}}}
-{"id":6,"kind":"session.ended","timestamp":"2026-06-21T00:00:05.000Z","session_id":"sess_fixture_youtube"}

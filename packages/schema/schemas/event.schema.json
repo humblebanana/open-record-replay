@@ -18,10 +18,6 @@
         "selection.changed",
         "ax.snapshot",
         "ax.diff",
-        "screenshot.captured",
-        "wait.idle",
-        "screen.screenshot",
-        "browser.page_observed",
         "recorder.started",
         "recorder.stopped",
         "recorder.paused",
@@ -30,8 +26,7 @@
         "recording_control.stop_clicked",
         "recording_control.pause_clicked",
         "recording_control.resume_clicked",
-        "ui.control.visible",
-        "media.playback_started"
+        "ui.control.visible"
       ]
     },
     "timestamp": { "type": "string" },
@@ -98,8 +93,6 @@
       },
       "additionalProperties": true
     },
-    "browser": { "type": "object" },
-    "screenshot": { "type": "object" },
     "recorder": { "type": "object" },
     "observation": { "type": "object" }
   },

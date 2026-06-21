@@ -197,7 +197,7 @@ node bin/orr.js session validate-recording latest
 node bin/orr.js skill prepare latest --runs runs --out skill-inputs
 ```
 
-The CLI also contains experimental workflow and demo commands. The stable public path is recording, validation, and skill input packaging.
+The stable public path is recording, validation, and skill input packaging.
 
 ## Requirements
 
@@ -240,7 +240,7 @@ macOS native recorder
 + host-agent skill creation handoff
 ```
 
-Future work may include richer adapters, visual evidence, an inspector UI, and replay experiments. They are not part of the current stable public path.
+Future work may include richer adapters or optional visual evidence. They are not part of the current stable public path.
 
 ## Documentation
 
@@ -439,7 +439,7 @@ node bin/orr.js session validate-recording latest
 node bin/orr.js skill prepare latest --runs runs --out skill-inputs
 ```
 
-CLI 里还保留了一些实验性的 workflow 和 demo 命令。当前稳定公开路径是：录制、验证、打包 Skill 输入。
+当前稳定公开路径是：录制、验证、打包 Skill 输入。
 
 ## 环境要求
 
@@ -482,7 +482,7 @@ macOS 原生录制器
 + 交给宿主 Agent 创建最终 Skill
 ```
 
-未来可能会增加更丰富的适配器、视觉证据、Inspector UI 和 replay 实验，但这些不是当前稳定公开路径。
+未来可能会增加更丰富的适配器或可选视觉证据，但这些不是当前稳定公开路径。
 
 ## 文档
 

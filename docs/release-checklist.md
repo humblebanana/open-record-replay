@@ -9,7 +9,6 @@ Use this before making the repository public or cutting an alpha release.
   - `runs/`
   - `skill-inputs/`
   - `.tmp*/`
-  - `workflows/`
 - Confirm `.DS_Store` files are not committed.
 - Confirm all committed fixtures are sanitized and intentionally public.
 - Confirm `package-lock.json` is committed.
@@ -55,7 +54,6 @@ macOS native recorder + CLI-first evidence package toolchain
 It should not be described as:
 
 - A Codex plugin.
-- An MCP-first system.
 - A deterministic UI macro replayer.
 - A workflow interpreter.
 - A final skill generator.

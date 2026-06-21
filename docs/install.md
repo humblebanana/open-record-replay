@@ -13,7 +13,7 @@ Open Record/Replay runs locally on macOS. The CLI is the primary entry point.
 ## Install From Source
 
 ```bash
-git clone <repo-url> open-record-replay
+git clone https://github.com/humblebanana/open-record-replay.git
 cd open-record-replay
 npm install
 npm run check

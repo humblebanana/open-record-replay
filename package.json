@@ -11,18 +11,15 @@
     "darwin"
   ],
   "bin": {
-    "orr": "./bin/orr.js",
-    "orr-mcp": "./packages/mcp-server/src/server.mjs"
+    "orr": "./bin/orr.js"
   },
   "scripts": {
     "build:native": "swift build --package-path packages/platform-macos",
     "check": "npm test && npm run build:native",
     "test": "node --test tests/*.test.mjs",
-    "orr": "node ./bin/orr.js",
-    "mcp": "node ./packages/mcp-server/src/server.mjs"
+    "orr": "node ./bin/orr.js"
   },
   "dependencies": {
-    "@modelcontextprotocol/sdk": "^1.17.5",
     "zod": "^3.25.76"
   },
   "devDependencies": {}

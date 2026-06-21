@@ -66,7 +66,6 @@ Do not commit local recordings or generated packages:
 - `runs/`
 - `skill-inputs/`
 - `.tmp*/`
-- `workflows/`
 - `packages/platform-macos/.build/`
 
 If a fixture is needed, use a deliberately small, sanitized recording and document why it is safe to include.

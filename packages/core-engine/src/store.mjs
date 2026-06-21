@@ -5,7 +5,6 @@ import { randomUUID } from "node:crypto";
 import { execFile, spawn } from "node:child_process";
 import { promisify } from "node:util";
 
-export const DEFAULT_QUERY = "study jazz music";
 const execFileAsync = promisify(execFile);
 
 export function resolveRunRoot(out = "runs") {
@@ -54,11 +53,10 @@ export async function createSession({
   name = "screen-activity",
   out = "runs",
   recorder = true,
-  recorderKind = "native-macos",
   preflight = true,
   requestPermissions = false
 } = {}) {
-  if (recorder && recorderKind === "native-macos" && preflight) {
+  if (recorder && preflight) {
     const permissions = await checkNativeMacOSPermissions({ request: requestPermissions });
     if (!permissions.recorderReady) throw new RecorderPermissionError(permissions);
   }
@@ -67,7 +65,6 @@ export async function createSession({
   const id = randomUUID().toUpperCase();
   const dir = sessionDir(runRoot, id);
   const eventsPath = path.join(dir, "events.jsonl");
-  const screenshotsDir = path.join(dir, "screenshots");
   const recordingManifestPath = path.join(dir, "recording_manifest.json");
   const startedAt = new Date().toISOString();
   const metadata = {
@@ -94,18 +91,10 @@ export async function createSession({
       os: "macos",
       arch: process.arch
     },
-    demo: recorderKind === "chrome-youtube" || name === "youtube-play-music" ? {
-      kind: "youtube-play-music",
-      default_query: DEFAULT_QUERY,
-      browser: "Google Chrome",
-      requires_login: false
-    } : null,
+    demo: null,
     artifacts: {
       events_path: eventsPath,
-      screenshots_dir: screenshotsDir,
-      recording_manifest_path: recordingManifestPath,
-      workflow_path: null,
-      replay_trace_path: null
+      recording_manifest_path: recordingManifestPath
     },
     recorder: null
   };
@@ -119,10 +108,8 @@ export async function createSession({
   if (!recorder) return session;
 
   const invocation = await recorderInvocation({
-    recorderKind,
     sessionState: sessionStatePath(dir),
     eventsPath,
-    screenshotsDir,
     manifestPath: recordingManifestPath
   });
 
@@ -261,48 +248,13 @@ export async function getSession(sessionId = "latest", out = "runs") {
   return normalizeSession(await readJson(file));
 }
 
-export function workflowPathFor(out, name = "youtube-play-music") {
-  return path.resolve(process.cwd(), out, `${name}.workflow.json`);
-}
-
-async function recorderInvocation({ recorderKind, sessionState, eventsPath, screenshotsDir, manifestPath }) {
-  if (recorderKind === "native-macos") {
-    const binary = await buildNativeMacOSRecorder();
-    return {
-      kind: "native-macos-recorder",
-      command: binary,
-      args: ["record", "--session", sessionState, "--events", eventsPath, "--manifest", manifestPath]
-    };
-  }
-  if (recorderKind === "chrome-youtube") {
-    return {
-      kind: "chrome-youtube-poller",
-      command: process.execPath,
-      args: [
-        path.resolve(process.cwd(), "packages/recorder/src/chromeYoutubeRecorder.mjs"),
-        "--session",
-        sessionState,
-        "--events",
-        eventsPath
-      ]
-    };
-  }
-  if (recorderKind === "screen") {
-    return {
-      kind: "screen-activity-poller",
-      command: process.execPath,
-      args: [
-        path.resolve(process.cwd(), "packages/recorder/src/screenActivityRecorder.mjs"),
-        "--session",
-        sessionState,
-        "--events",
-        eventsPath,
-        "--screenshots",
-        screenshotsDir
-      ]
-    };
-  }
-  throw new Error(`Unsupported recorder kind: ${recorderKind}`);
+async function recorderInvocation({ sessionState, eventsPath, manifestPath }) {
+  const binary = await buildNativeMacOSRecorder();
+  return {
+    kind: "native-macos-recorder",
+    command: binary,
+    args: ["record", "--session", sessionState, "--events", eventsPath, "--manifest", manifestPath]
+  };
 }
 
 async function buildNativeMacOSRecorder() {
@@ -332,10 +284,7 @@ function normalizeSession(session) {
     demo: null,
     artifacts: {
       events_path: session.eventsPath,
-      screenshots_dir: null,
-      recording_manifest_path: null,
-      workflow_path: null,
-      replay_trace_path: null
+      recording_manifest_path: null
     },
     recorder: null
   };
