@@ -1,0 +1,7 @@
+{
+  "id": "fixture-feishu-file-send",
+  "startedAt": "2026-06-21T00:00:00Z",
+  "endedAt": "2026-06-21T00:01:00Z",
+  "endReason": "recording_controls_stopped",
+  "eventsPath": "events.jsonl"
+}

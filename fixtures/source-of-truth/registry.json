@@ -1,0 +1,18 @@
+{
+  "sources": [
+    {
+      "id": "feishu-file-send",
+      "name": "Feishu file send",
+      "description": "Official Codex Record & Replay sample for sending image files in Feishu.",
+      "sessionPath": "fixtures/source-of-truth/feishu-file-send/session.json",
+      "eventsPath": "fixtures/source-of-truth/feishu-file-send/events.jsonl"
+    },
+    {
+      "id": "youtube-play-video",
+      "name": "YouTube play video",
+      "description": "Official Codex Record & Replay sample for searching YouTube and playing a video.",
+      "sessionPath": "fixtures/source-of-truth/youtube-play-video/session.json",
+      "eventsPath": "fixtures/source-of-truth/youtube-play-video/events.jsonl"
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://open-record-replay.local/schemas/session.schema.json",
+  "type": "object",
+  "required": ["schema_version", "kind", "id", "status", "started_at", "artifacts"],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "kind": { "const": "session" },
+    "id": { "type": "string" },
+    "startedAt": { "type": "string" },
+    "endedAt": { "type": ["string", "null"] },
+    "endReason": { "type": ["string", "null"] },
+    "eventsPath": { "type": "string" },
+    "name": { "type": "string" },
+    "status": { "enum": ["recording", "completed", "cancelled", "failed"] },
+    "started_at": { "type": "string" },
+    "ended_at": { "type": ["string", "null"] },
+    "end_reason": { "type": ["string", "null"] },
+    "platform": { "type": "object" },
+    "demo": { "type": "object" },
+    "artifacts": {
+      "type": "object",
+      "required": ["events_path"],
+      "properties": {
+        "events_path": { "type": "string" },
+        "screenshots_dir": { "type": ["string", "null"] },
+        "recording_manifest_path": { "type": ["string", "null"] },
+        "workflow_path": { "type": ["string", "null"] },
+        "replay_trace_path": { "type": ["string", "null"] }
+      }
+    }
+  }
+}

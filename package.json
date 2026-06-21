@@ -1,0 +1,29 @@
+{
+  "name": "open-record-replay",
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Local-first desktop Record/Replay substrate for agent workflows.",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  },
+  "os": [
+    "darwin"
+  ],
+  "bin": {
+    "orr": "./bin/orr.js",
+    "orr-mcp": "./packages/mcp-server/src/server.mjs"
+  },
+  "scripts": {
+    "build:native": "swift build --package-path packages/platform-macos",
+    "check": "npm test && npm run build:native",
+    "test": "node --test tests/*.test.mjs",
+    "orr": "node ./bin/orr.js",
+    "mcp": "node ./packages/mcp-server/src/server.mjs"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.17.5",
+    "zod": "^3.25.76"
+  },
+  "devDependencies": {}
+}

@@ -1,0 +1,130 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://open-record-replay.local/schemas/event.schema.json",
+  "type": "object",
+  "required": ["id", "kind", "timestamp"],
+  "properties": {
+    "id": { "type": ["string", "number"] },
+    "kind": {
+      "enum": [
+        "session.started",
+        "session.ended",
+        "window.changed",
+        "mouse.click",
+        "mouse.drag",
+        "keyboard.text_input",
+        "keyboard.submit",
+        "keyboard.shortcut",
+        "selection.changed",
+        "ax.snapshot",
+        "ax.diff",
+        "screenshot.captured",
+        "wait.idle",
+        "screen.screenshot",
+        "browser.page_observed",
+        "recorder.started",
+        "recorder.stopped",
+        "recorder.paused",
+        "recorder.resumed",
+        "recorder.observation_failed",
+        "recording_control.stop_clicked",
+        "recording_control.pause_clicked",
+        "recording_control.resume_clicked",
+        "ui.control.visible",
+        "media.playback_started"
+      ]
+    },
+    "timestamp": { "type": "string" },
+    "app": {
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" }
+      },
+      "additionalProperties": true
+    },
+    "window": {
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "url": { "type": "string" }
+      },
+      "additionalProperties": true
+    },
+    "mouse": {
+      "type": "object",
+      "properties": {
+        "button": { "type": "string" },
+        "clickCount": { "type": "number" },
+        "target": { "$ref": "#/$defs/axElement" },
+        "origin": { "$ref": "#/$defs/actionPoint" },
+        "destination": { "$ref": "#/$defs/actionPoint" }
+      },
+      "additionalProperties": true
+    },
+    "keyboard": {
+      "type": "object",
+      "properties": {
+        "text": { "type": "string" },
+        "keyEquivalent": { "type": "string" },
+        "target": { "$ref": "#/$defs/axElement" }
+      },
+      "additionalProperties": true
+    },
+    "selection": {
+      "type": "object",
+      "properties": {
+        "target": { "$ref": "#/$defs/axElement" },
+        "selectedItems": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/axElement" }
+        },
+        "selectedText": { "type": "string" },
+        "selectedRange": {
+          "type": "object",
+          "properties": {
+            "location": { "type": "number" },
+            "length": { "type": "number" }
+          },
+          "additionalProperties": true
+        }
+      },
+      "additionalProperties": true
+    },
+    "ax": {
+      "type": "object",
+      "properties": {
+        "mode": { "enum": ["fullTree", "diffFromPrevious"] },
+        "text": { "type": "string" }
+      },
+      "additionalProperties": true
+    },
+    "browser": { "type": "object" },
+    "screenshot": { "type": "object" },
+    "recorder": { "type": "object" },
+    "observation": { "type": "object" }
+  },
+  "$defs": {
+    "axElement": {
+      "type": "object",
+      "properties": {
+        "role": { "type": "string" },
+        "subrole": { "type": "string" },
+        "title": { "type": "string" },
+        "description": { "type": "string" },
+        "identifier": { "type": "string" },
+        "placeholder": { "type": "string" },
+        "value": { "type": "string" }
+      },
+      "additionalProperties": true
+    },
+    "actionPoint": {
+      "type": "object",
+      "properties": {
+        "app": { "type": "object", "additionalProperties": true },
+        "window": { "type": "object", "additionalProperties": true },
+        "element": { "$ref": "#/$defs/axElement" }
+      },
+      "additionalProperties": true
+    }
+  }
+}
