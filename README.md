@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="./assets/cover.png" alt="Open Record/Replay" width="100%">
+</p>
+
 <h1 align="center">Open Record/Replay</h1>
 
 <p align="center">
