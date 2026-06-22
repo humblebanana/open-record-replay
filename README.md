@@ -73,12 +73,6 @@ The recorder can capture:
 
 `events.jsonl` is the primary evidence. Screenshots are not part of the current core recording path.
 
-## What It Is Not
-
-Open Record/Replay is not a coordinate macro recorder, a screenshot-first recorder, a cloud recording service, or a final skill generator.
-
-It does not try to create the final skill by itself. Different agents have different skill formats, install locations, trigger rules, and validation workflows. Open Record/Replay records and packages the evidence; the current agent should create the final skill in its own native format.
-
 ## Quick Demo
 
 This is the typical flow for teaching an agent a new desktop workflow.
@@ -314,12 +308,6 @@ Open Record/Replay 给 Agent 的不是模糊描述，而是一份真实事件证
 - Accessibility tree / diff 上下文
 
 `events.jsonl` 是最关键的证据。截图不是当前核心录制链路的一部分。
-
-## 它不是什么
-
-Open Record/Replay 不是纯坐标宏录制器，不是截图优先的录制器，不是云端录制服务，也不是最终 Skill 生成器。
-
-它不会自己决定最终 Skill 的格式。不同 Agent 的 Skill 格式、安装位置、触发规则和验证方式都不一样。Open Record/Replay 负责录制和打包证据；最终 Skill 应该由当前 Agent 用自己的原生格式创建。
 
 ## 快速演示
 
